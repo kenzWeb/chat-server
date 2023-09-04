@@ -50,16 +50,6 @@ io.on('connection', (socket) => {
 		}
 	})
 
-	socket.on('sendImage', ({imageBase64, params}) => {
-		const user = findUser(params)
-
-		if (user) {
-			io.to(user.room).emit('image', {
-				data: {user, imageBase64},
-			})
-		}
-	})
-
 	socket.on('leftRoom', ({params}) => {
 		const user = removeUser(params)
 
